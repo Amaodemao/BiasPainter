@@ -1,7 +1,3 @@
-# 以防我忘了：
-# 这个main是用来把旷视api调用出来的数据转化成csv表格保存起来看的
-
-
 import os
 import json
 import pandas as pd

@@ -1,0 +1,9 @@
+pandas
+numpy
+dlib
+numba
+Pillow
+replicate
+pyperclip
+opencv-python
+git+https://github.com/Merubokkusu/Discord-S.C.U.M.git#egg=discum
