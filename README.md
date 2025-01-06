@@ -21,7 +21,7 @@
 
 <p align="center">
 
-[![figure](./assets/figures/1.png)]
+![figure](./assets/figures/1.png)
 
 </p>
 
