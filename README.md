@@ -1,7 +1,7 @@
 # Artifact for the Paper "New Job, New Gender? Metamorphic Testing for Social Bias in Image Generation Models"
 
 <div align="center">
-![arxiv](https://img.shields.io/badge/arXiv%20paper-2401.00763-b31b1b)&nbsp;
+![arxiv](https://img.shields.io/badge/arXiv%20paper-2401.00763-red)
 
 <!-- ![Static Badge](https://img.shields.io/badge/any_text-you_like-blue) -->
 </div>
