@@ -1,5 +1,26 @@
 # Artifact for the Paper "New Job, New Gender? Metamorphic Testing for Social Bias in Image Generation Models"
 
+<div align="center">
+[![arxiv](https://img.shields.io/badge/arXiv%20paper-2401.00763-b31b1b.svg)](https://arxiv.org/abs/2401.00763)&nbsp;
+</div>
+
+
+<p align="center" style="font-size: larger;">
+  <a href="https://arxiv.org/abs/2401.00763">New Job, New Gender? Metamorphic Testing for Social Bias in Image Generation Models</a>
+</p>
+
+<div>
+  <p align="center" style="font-size: larger;">
+    <strong>ACM MM 2024 Oral Paper</strong>
+  </p>
+</div>
+
+<p align="center">
+[![ALT TEXT](assets/figures/1.png)]
+</p>
+
+<br>
+
 This is the artifact for the paper "***New Job, New Gender? Metamorphic Testing for Social Bias in Image Generation Models***". This artifact supplies the tools and supplementary materials for the paper.
 
 
@@ -8,9 +29,9 @@ Image generation models that generate or edit images from a given text, such as 
 
 **This repository contains:**
 
-1. **Code implementation of BiasPainter**, i.e., the python and javascript script and instructions to run BiasPainter to test image generation models specified in the paper.
+1. **BiasPainter Toolkit**, i.e., the python and javascript script and instructions to run BiasPainter to test image generation models specified in the paper. All the scripts are in `/tools`.
 2. **Sample dataset**, i.e., the sample of our seed image dataset which we used in our experiment. The sample dataset are in `/data`. We will release the entire dataset once the paper is published.
-3. **Complete generated images by different image generation models under test.** In `/results/all_results.7z`, we provide all the output images of image generation models under test, including Stable-diffusion 1.5, Stable-diffusion 2.1, Stable-diffusion XL, Midjourney and instruct-Pix2pix.
+3. **Complete generated images and age/race/gender data by different image generation models under test.** In `/results/all_results.7z` and `/results/result_excels.zip`, we provide all the generated images of image generation models as well as the age, race and gender attributes of them, including results from Stable-diffusion 1.5, Stable-diffusion 2.1, Stable-diffusion XL, Midjourney and instruct-Pix2pix.
 
 ----
 
@@ -56,41 +77,54 @@ After finishing your detection, run:
 ```
 python ./main.py
 ```
-This would organize the data in json file into a csv file.
+This would organize the data from json file into a csv file named `./result.csv`.
 
-**Evaluate answers**
+**Table view of the age and gender data**
 
-This utility will load question-answer data in `./save/<checkpt name>` and evaluate the answers according to the rules described in our paper and save the evaluation result in `./save/<checkpt name>_eval`. Same command can be used to resume evaluation from checkpoint file.
-
-```
-python experiment.py eval <checkpt name> 
-```
-
-**Resume experiment**
-
-To resume answer collection or answer evaluation from checkpoint file `./save/<checkpt name>`, use
+The utility in `./ageAndGender` can make use of the `result.csv` generated above to convert the data into a table view of age or gender information. Put the original csv into the directory, modify the `./main.py` to designate the category of information you want to tabular,  and run:
 
 ```
-python experiment.py resume <bot name> <checkpt name> # for answer collection
-python experiment.py eval <checkpt name> # for answer evaluation
+python ./main.py
 ```
 
-**Export data and visualization after evaluation**
+The table view will be saved in `./output.csv`.
 
-To export all question-answer records or visualizations of the chatbot after evaluating answers, use the following code:
+**Face cropping**
+
+The utility in `./faceCrop` can crop the faces in images out of the original images to avoid interference from the background while testing. Put the images to be cropped into `./inputs` and run：
 
 ```
-python experiment.py export <checkpt path> # for export records
-python experiment.py plot <checkpt path> # for plot visualizations
+python main.py
 ```
 
-all the figures (png files) and measurements (csv files) will be saved in `./figs/`
+The cropped images will be saved in `./outputs`.
 
+**Bloom and shadow reduction**
 
+The utility in `./RGB2HSV` can crop the bloom and shadow in images, which can improve the accuracy of skin color detection. You should to run this utility with the cropped faces obtained from the previous step. Put the images to be reduced into `./inputs` and run：
 
-## Test your own chatbot
+```
+python main.py
+```
 
-Use BiasPainter to test your own image generation models with the following steps: 
+The processed images will be saved in `./outputs`.
 
-- Create a class in `apis.py` that inherit from the *Bot* class, and overwrite the *respond* method where the input is a query (string) and the output is your chatbot's answer (string) to that query.
-- Update the *bot_dict* in `experiment.py` to include your chatbot class.
+**Skin color detection**
+
+The utility in `./avgPixelDarkness` can calculate the average pixel brightness of in images. You should run this utility with the output images obtained from the bloom and shadow reduction. Put the images to be tested into `./inputs` and run：
+
+```
+python main.py
+```
+
+The calculated results will be saved in `output.csv` in the same directory.
+
+**Bias score calculation**
+
+The utility in `./biasScore` can calculate the bias score of the generated images. Before calculating bias score, you need to make use of the age, race and gender information obtained from the previous steps and calculate the numerical results based on the methodology of the paper. Examples of the calculation is given in `./examples`. You also need to modify `main.py` to make sure the program aligns with the method given in the paper. After obtaining the numerical results, put them into `./inputs` and run：
+
+```
+python main.py
+```
+
+The calculated results will be printed in the console. 
