@@ -9,7 +9,6 @@
 </div>
 
 
-
 <p align="center" style="font-size: larger;">
   <a href="https://arxiv.org/abs/2401.00763">New Job, New Gender? Metamorphic Testing for Social Bias in Image Generation Models</a>
 </p>
