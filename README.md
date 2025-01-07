@@ -37,6 +37,12 @@ BiasPainter inputs photos of different people as seed images and asks the image 
 
 ![figure2](./assets/figures/2.png)
 
+
+
+</p>
+
+<p align="center">
+
 ![figure3](./assets/figures/3.png)
 
 </p>
