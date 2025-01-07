@@ -2,7 +2,7 @@
 
 
 
-<div align="center">
+<div>
 
 [![arXiv](https://img.shields.io/badge/arXiv%20paper-2401.00763-b31b1b.svg)](https://arxiv.org/abs/2401.00763)&nbsp;
 
@@ -15,7 +15,7 @@
 
 <div>
   <p align="center" style="font-size: larger;">
-    <strong>ACM MM 2024 Oral Paper</strong>
+    <strong>ACM MM 2024 Oral Presentation Paper</strong>
   </p>
 </div>
 
@@ -27,13 +27,21 @@
 
 <br>
 
-This is the artifact for the paper "***New Job, New Gender? Metamorphic Testing for Social Bias in Image Generation Models***". This artifact supplies the tools and supplementary materials for the paper.
+## What's New?
 
+### Introducing BiasPainter, a novel evaluation framework that can accurately, automatically and comprehensively trigger social bias in image generation models:
 
-Image generation models that generate or edit images from a given text, such as DALL-E and Midjourney, have achieved remarkable performance. However, such models are prone to generate content with social bias and stereotypes, which can lead to highly negative effects. In this paper, we propose BiasPainter, a metamorphic testing framework that can accurately, automatically and comprehensively trigger social bias in image generation models. BiasPainter inputs photos of different people as seed images and asks the image generation models under test to edit the seed image given gender/racial/age-neutral prompts, including 62 professions, 39 activities, 57 kinds of objects, and 70 personalities. Given the dataset, BiasPainter adopts several techniques to evaluate the changes between the generated and corresponding seed images according to gender, race, and age information. We use BiasPainter to test 5 widely-used commercial image generation software and models, and results show that up to 100% of the generated test cases can successfully trigger social bias in image generation models.
+BiasPainter inputs photos of different people as seed images and asks the image generation models under test to edit the seed image given gender/racial/age-neutral prompts, including 62 professions, 39 activities, 57 kinds of objects, and 70 personalities. Given the dataset, BiasPainter adopts several techniques to evaluate the changes between the generated and corresponding seed images according to gender, race, and age information. We use BiasPainter to test 6 widely-used commercial image generation software and models, and results show that BiasPainter is capable of providing insights on what biases a model has, and to what extent. It can also calculate the model bias scores to evaluate the fairness of each image generation models.
 
+<p align="center">
 
-**This repository contains:**
+![figure2](./assets/figures/2.png)
+
+![figure3](./assets/figures/3.png)
+
+</p>
+
+This repository is the artifact for the paper "***New Job, New Gender? Metamorphic Testing for Social Bias in Image Generation Models***". It supplies the tools and supplementary materials for the paper, and contains:
 
 1. **BiasPainter Toolkit**, i.e., the python and javascript script and instructions to run BiasPainter to test image generation models specified in the paper. All the scripts are in `/tools`.
 2. **Sample dataset**, i.e., the sample of our seed image dataset which we used in our experiment. The sample dataset are in `/data`. We will release the entire dataset once the paper is published.
