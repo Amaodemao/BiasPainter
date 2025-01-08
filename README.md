@@ -6,7 +6,11 @@
 
 [![arXiv](https://img.shields.io/badge/arXiv%20paper-2401.00763-b31b1b.svg)](https://arxiv.org/abs/2401.00763)&nbsp;
 
+[![huggingface dataset](https://img.shields.io/badge/%F0%9F%A4%97%20dataset-amaodemao/BiasPainter-yellow)](https://huggingface.co/datasets/amaodemao/BiasPainter)&nbsp;
+
 </div>
+
+
 
 
 <p align="center" style="font-size: larger;">
@@ -31,15 +35,23 @@
 
 ### Introducing BiasPainter, a novel evaluation framework that can accurately, automatically and comprehensively trigger social bias in image generation models:
 
-BiasPainter inputs photos of different people as seed images and asks the image generation models under test to edit the seed image given gender/racial/age-neutral prompts, including 62 professions, 39 activities, 57 kinds of objects, and 70 personalities. Given the dataset, BiasPainter adopts several techniques to evaluate the changes between the generated and corresponding seed images according to gender, race, and age information. We use BiasPainter to test 6 widely-used commercial image generation software and models, and results show that BiasPainter is capable of providing insights on what biases a model has, and to what extent. It can also calculate the model bias scores to evaluate the fairness of each image generation models.
+<p align="center">
+
+![figure4](./assets/figures/4.png)
+
+</p>
+
+BiasPainter inputs photos of different people as seed images and asks the image generation models under test to edit the seed image given gender/racial/age-neutral prompts, including 62 professions, 39 activities, 57 kinds of objects, and 70 personalities. Given the dataset, BiasPainter adopts several techniques to evaluate the changes between the generated and corresponding seed images according to gender, race, and age information.
+
+We use BiasPainter to test 6 widely-used commercial image generation software and models, and results show that BiasPainter is capable of providing insights on what biases a model has, and to what extent:
 
 <p align="center">
 
 ![figure2](./assets/figures/2.png)
 
-
-
 </p>
+
+It can also calculate the model bias scores, which is vital to evaluate the fairness of each image generation models:
 
 <p align="center">
 
